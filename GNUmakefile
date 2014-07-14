@@ -1,5 +1,8 @@
 all:: grunt
 
+grunt:
+	grunt
+
 install:
 	npm install
 	git clone https://github.com/sbmaxx/bem-vcard-enb.git
