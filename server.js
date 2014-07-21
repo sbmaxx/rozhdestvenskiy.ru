@@ -25,7 +25,8 @@ router.get('/', function(req, res) {
 });
 
 app.use('/', router);
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
+// let's nginx serve our static
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
