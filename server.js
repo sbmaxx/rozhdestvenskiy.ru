@@ -23,6 +23,7 @@ var lastModified = (new Date()).toUTCString();
 
 router.get('/', function(req, res) {
 
+    res.setHeader('X-Ololo', 'Hello, i\'m node.js app: ' + (new Date()).toUTCString());
     res.setHeader('Last-Modified', lastModified);
     res.send(bh.apply(generator(data, 'bem-vcard-enb/')));
 
