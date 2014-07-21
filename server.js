@@ -24,10 +24,10 @@ router.get('/', function(req, res) {
 
 });
 
+app.use('/', router);
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
-app.use('/', router);
 
 app.listen(8080);
