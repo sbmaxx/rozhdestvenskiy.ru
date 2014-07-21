@@ -4,11 +4,6 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var app            = express();
 
-app.use(express.static(__dirname + '/public'));
-app.use(morgan('dev'));
-app.use(bodyParser());
-app.use(methodOverride());
-
 var env = process.env.NODE_ENV || 'development';
 
 var router = express.Router();
@@ -23,12 +18,16 @@ var lastModified = (new Date()).toUTCString();
 
 router.get('/', function(req, res) {
 
-    res.setHeader('X-Ololo', 'Hello, i\'m node.js app: ' + (new Date()).toUTCString());
     res.setHeader('Last-Modified', lastModified);
+    res.setHeader('X-Powered-By', 'https://github.com/sbmaxx/rozhdestvenskiy.ru.git');
     res.send(bh.apply(generator(data, 'bem-vcard-enb/')));
 
 });
 
+app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
+app.use(bodyParser());
+app.use(methodOverride());
 app.use('/', router);
 
 app.listen(8080);
