@@ -25,4 +25,8 @@ server {
         root /var/www/vhosts/rozhdestvenskiy.ru/public/;
     }
 
+    location /experiments {
+        root /var/www/vhosts/rozhdestvenskiy.ru/public/;
+    }
+
 }
