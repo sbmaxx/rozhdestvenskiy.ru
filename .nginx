@@ -3,10 +3,9 @@ upstream node {
 }
 
 server {
-    listen 80 default_server;
-
+    listen 80;
     server_name rozhdestvenskiy.ru www.rozhdestvenskiy.ru;
-    rewrite ^https://$server_name$request_uri? permanent;
+    rewrite ^ https://$server_name$request_uri? permanent;
 }
 
 server {
