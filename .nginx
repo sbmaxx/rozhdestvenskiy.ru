@@ -8,6 +8,9 @@ server {
     rewrite ^ https://$server_name$request_uri? permanent;
 }
 
+# A grade SSL security
+# https://community.qualys.com/blogs/securitylabs/2013/08/05/configuring-apache-nginx-and-openssl-for-forward-secrecy
+
 server {
     listen 443;
     ssl    on;
