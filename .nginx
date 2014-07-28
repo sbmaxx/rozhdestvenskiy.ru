@@ -27,7 +27,7 @@ server {
         proxy_set_header X-Forwarded-Proto https;
     }
 
-    location ~ \.(css|js|woff|ttf|html)$ {
+    location ~ \.(css|js|woff|ttf|html|ico)$ {
         root /var/www/vhosts/rozhdestvenskiy.ru/public/;
     }
 
