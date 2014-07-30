@@ -1,0 +1,11 @@
+/* TEAM */
+    Creator: Roman Rozhdestvenskiy
+    Contact: sbmaxx [at] gmail.com
+    Twitter: @sbmaxx
+    From: Moscow, Russian
+
+/* SITE */
+    Language: English / Russian
+    Doctype: HTML5
+    IDE: Atom
+    Source: https://github.com/sbmaxx/bem-vcard-enb
