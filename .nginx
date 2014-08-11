@@ -4,7 +4,7 @@ upstream node {
 
 server {
     listen 80;
-    server_name sbmaxx.ru
+    server_name www.sbmaxx.ru sbmaxx.ru
     rewrite ^ https://rozhdestvenskiy.ru$request_uri? permanent;
 }
 
