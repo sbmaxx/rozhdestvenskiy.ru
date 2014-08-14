@@ -17,9 +17,15 @@ var generator = require(vcardPath + 'pages/generator/generator.js'),
 var lastModified = (new Date()).toUTCString();
 
 router.get('/', function(req, res) {
+
+    var ua = req.headers['user-agent'].toLowerCase();
+
     res.setHeader('Last-Modified', lastModified);
     res.setHeader('X-Powered-By', 'https://github.com/sbmaxx/rozhdestvenskiy.ru.git');
-    res.send(bh.apply(generator(data, 'bem-vcard-enb/')));
+
+    // do not use inlining for google because the robot can't see microdata properly
+    res.send(bh.apply(generator(data, 'bem-vcard-enb/', ua.indexOf('google') === -1)));
+
 });
 
 
