@@ -4,8 +4,11 @@ upstream node {
 
 server {
     listen 80;
-    server_name www.sbmaxx.ru sbmaxx.ru
-    rewrite ^ https://rozhdestvenskiy.ru$request_uri? permanent;
+    server_name www.sbmaxx.ru sbmaxx.ru;
+    location / {
+        root /var/www/vhosts/sbmaxx.ru/public;
+    }
+    #rewrite ^ https://rozhdestvenskiy.ru$request_uri? permanent;
 }
 
 server {
@@ -21,12 +24,25 @@ server {
 
 server {
     listen 443;
+
+
     ssl    on;
     ssl_certificate /etc/ssl/rozhdestvenskiy.ru/ssl.crt;
     ssl_certificate_key /etc/ssl/rozhdestvenskiy.ru/server.key;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/rozhdestvenskiy.ru/dhparam.pem;
+    ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS";
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains";
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
     server_name rozhdestvenskiy.ru www.rozhdestvenskiy.ru;
 
-    add_header Strict-Transport-Security max-age=15768000;
     index index.html index.htm;
 
     location / {
@@ -38,7 +54,7 @@ server {
         proxy_set_header X-Forwarded-Proto https;
     }
 
-    location ~ \.(css|js|woff|ttf|html|ico|txt)$ {
+    location ~ \.(css|js|woff|ttf|html|ico|txt|png|jpg)$ {
         root /var/www/vhosts/rozhdestvenskiy.ru/public/;
     }
 
@@ -46,4 +62,3 @@ server {
         root /var/www/vhosts/rozhdestvenskiy.ru/public/;
     }
 }
-

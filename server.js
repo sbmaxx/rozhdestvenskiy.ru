@@ -10,7 +10,7 @@ var router = express.Router();
 
 var vcardPath = './bem-vcard-enb/';
 
-var generator = require(vcardPath + 'pages/generator/generator.js'),
+var generator = require(vcardPath + 'bemjson.js'),
     bh = require(vcardPath + 'pages/index/index.bh.js'),
     data = require(vcardPath + 'data.js');
 
