@@ -29,12 +29,42 @@ router.get('/', function(req, res) {
 
 });
 
+router.get('/dev/instagram', function(req, res) {
+    console.log('CODE: ', req.param('code'));
+    res.send('ok');
+});
 
-app.use('/', router);
+var winston = require('winston');
+var logger = new winston.Logger({
+    transports: [
+        new (winston.transports.DailyRotateFile)({
+            filename: __dirname + '/logs/custom_log',
+            json: true,
+            level: 'debug',
+            name: 'file'
+        })
+    ]
+});
+
 // app.use(express.static(__dirname + '/public'));
 // let's nginx serve our static
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
+
+console.log(__dirname + '/logs/custom_log');
+
+router.post('/browser', function(req, res) {
+    //console.log(req.headers);
+    //console.log(req.body);
+    logger.info({
+        headers: req.headers,
+        info: req.body.info
+    });
+    res.send('ok');
+});
+
+
+app.use('/', router);
 
 app.listen(8080);

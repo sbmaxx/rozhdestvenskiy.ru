@@ -8,7 +8,13 @@ server {
     location / {
         root /var/www/vhosts/sbmaxx.ru/public;
     }
-    #rewrite ^ https://rozhdestvenskiy.ru$request_uri? permanent;
+    location /browser {
+        proxy_pass  http://node;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
 }
 
 server {
@@ -55,7 +61,7 @@ server {
         proxy_set_header X-Forwarded-Proto https;
     }
 
-    location ~ \.(css|js|woff|ttf|html|ico|txt|png|jpg)$ {
+    location ~ \.(css|js|woff|ttf|html|ico|txt|png|jpg|xml)$ {
         root /var/www/vhosts/rozhdestvenskiy.ru/public/;
     }
 

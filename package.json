@@ -6,7 +6,8 @@
     "morgan": "~1.0.0",
     "body-parser": "~1.0.0",
     "method-override": "~1.0.0",
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "winston": "~0.9.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
