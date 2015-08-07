@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /experiments/
+Disallow: /dev/
+Disallow: /money/
 Disallow: /tmp/
-
