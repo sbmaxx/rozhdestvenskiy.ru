@@ -10,19 +10,8 @@ var router = express.Router();
 
 var vcardPath = './bem-vcard-enb/';
 
-var generator = require(vcardPath + 'bemjson.js'),
-    bh = require(vcardPath + 'pages/index/index.bh.js'),
-    data = require(vcardPath + 'data.js');
-
 router.get('/', function(req, res) {
 
-    var ua = req.headers['user-agent'].toLowerCase(),
-        isSearchEngine = ua.indexOf('google') !== -1 || ua.indexOf('yandex') !== -1;
-
-    res.setHeader('Last-Modified', lastModified);
-    res.setHeader('X-Powered-By', 'https://github.com/sbmaxx/rozhdestvenskiy.ru.git');
-
-    // do not use inlining for google because the robot can't see microdata properly
     res.send(bh.apply(generator(data, 'bem-vcard-enb/', !isSearchEngine)));
 
 });

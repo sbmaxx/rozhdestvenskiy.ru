@@ -1,5 +1,4 @@
 User-agent: *
 Disallow: /dev/
-Disallow: /money/
 Disallow: /tmp/
 Host: https://rozhdestvenskiy.ru
