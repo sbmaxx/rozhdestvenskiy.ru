@@ -14,8 +14,6 @@ var generator = require(vcardPath + 'bemjson.js'),
     bh = require(vcardPath + 'pages/index/index.bh.js'),
     data = require(vcardPath + 'data.js');
 
-var lastModified = (new Date()).toUTCString();
-
 router.get('/', function(req, res) {
 
     var ua = req.headers['user-agent'].toLowerCase(),
